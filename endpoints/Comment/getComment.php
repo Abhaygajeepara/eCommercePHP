@@ -3,9 +3,9 @@ require_once('../includes/config.php');
 require_once('../includes/keyword.php');
 $response = array();
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-     $userId = isset($_GET['product_id']) ? $_GET['product_id'] : '';
-     if(!empty($userId) && is_numeric($userId)){
-        $query = "SELECT * FROM `comments` where product_id = '$userId'"; 
+     $product_id = isset($_GET['product_id']) ? $_GET['product_id'] : '';
+     if(!empty($product_id) && is_numeric($product_id)){
+        $query = "SELECT * FROM `comments` where product_id = '$product_id'"; 
         $result = $conn->query($query);
 
         if ($result->num_rows > 0) {
