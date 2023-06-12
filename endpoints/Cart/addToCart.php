@@ -60,5 +60,3 @@ else{
 }
 header("CONTENT-TYPE:JSON");
 echo json_encode($mainResponse, JSON_PRETTY_PRINT);
-
-?>

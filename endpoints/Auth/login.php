@@ -1,6 +1,6 @@
 <?php
 require_once('../includes/config.php');
-require_once('../includes/keyboard.php');
+require_once('../includes/keyword.php');
 $response = array();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = isset($_POST['email']) ? $_POST['email'] : '';

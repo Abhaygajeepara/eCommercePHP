@@ -1,6 +1,6 @@
 <?php
 require_once('../includes/config.php');
-require_once('../includes/keyboard.php');
+require_once('../includes/keyword.php');
 $response = array();
 if ($_SERVER['REQUEST_METHOD'] === 'GET'){
     $userId = isset($_GET['userId']) ? $_GET['userId'] : '';
@@ -39,4 +39,3 @@ else{
 }
 header("CONTENT-TYPE:JSON");
 echo json_encode($mainResponse, JSON_PRETTY_PRINT);
-?>

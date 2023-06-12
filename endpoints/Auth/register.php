@@ -1,6 +1,6 @@
 <?php
 require_once('../includes/config.php');
-require_once('../includes/keyboard.php');
+require_once('../includes/keyword.php');
 $response = array();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = isset($_POST['email']) ? $_POST['email'] : '';
@@ -21,7 +21,8 @@ if(!empty($email) && !empty($password) && !empty($username) && !empty($shippingA
         $query = "INSERT INTO user (email, `password`, username, shipping_address) VALUES ('$email', '$password', '$username', '$shippingAddress')";
         if($conn->query($query)){
             $mainResponse[$status_keyword] = true;
-    $mainResponse[$message_keyword] = $registeration_successful_keyword;
+            $mainResponse[$message_keyword] = $successfulMessage_keyword;
+            
         }
         else{
             $mainResponse[$status_keyword] = false;
