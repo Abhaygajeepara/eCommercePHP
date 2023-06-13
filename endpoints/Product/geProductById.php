@@ -14,9 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     $response['image'] = $row['image'];
                     $response['pricing'] = $row['pricing'];
                     $response['shippingcost'] = $row['shippingcost'];
-            
-           
-
                     $commentquery = "SELECT * FROM `comments` where product_id = '$product_id'"; 
                     $commentResult = $conn->query($commentquery);
                     $commentResponse = array();

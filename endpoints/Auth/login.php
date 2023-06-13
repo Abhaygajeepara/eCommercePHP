@@ -16,7 +16,7 @@ if(!empty($email) && !empty($password)){
             {
                 $response['id'] = $row['id'];
                 $response['email'] = $row['email'];
-                $response['name'] = $row['name'];
+                $response['username'] = $row['username'];
                 $mainResponse[$data_keyword] = $response;
                 $mainResponse[$status_keyword] = true;
             }else{
