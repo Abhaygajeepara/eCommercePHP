@@ -1,22 +1,28 @@
 <?php
 require_once('../includes/config.php');
 require_once('../includes/keyboard.php');
+
 $response = array();
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
     $email = isset($_POST['email']) ? $_POST['email'] : '';
     $password = isset($_POST['password']) ? $_POST['password'] : '';
+
 if(!empty($email) && !empty($password)){
     try {
         $query = "SELECT * FROM user WHERE email = '{$email}' AND password = '{$password}'";
+
         $result =  $conn->query($query);
         if ($result) {
             $row = mysqli_fetch_assoc($result);
             // while ($row = mysqli_fetch_assoc($result))
+
             if($row['email'] == $email && $password == $row['password'])
             {
                 $response['id'] = $row['id'];
                 $response['email'] = $row['email'];
-                $response['name'] = $row['name'];
+                $response['username'] = $row['username'];
                 $mainResponse[$data_keyword] = $response;
                 $mainResponse[$status_keyword] = true;
             }else{
@@ -27,7 +33,8 @@ if(!empty($email) && !empty($password)){
             }
            
         }
-    } catch (Exception $e) {
+    }
+    catch (Exception $e) {
         $mainResponse[$status_keyword] = false;
         $mainResponse[$message_keyword] = $internal_message_keyword;
     }

@@ -4,8 +4,6 @@ $status_keyword = "status";
 $message_keyword = "successful";
 
 
-
-
 // messages
 $dataNotfound_message_keyword = "Data not found";
 $dataFound_message_keyword = "Data found";
@@ -32,5 +30,4 @@ $addToCartSuccessfully_message_keyword = "Add To Cart Successfully";
 $addToCartFailed_message_keyword = "Add To Cart failed";
 
 
-// 
 ?>

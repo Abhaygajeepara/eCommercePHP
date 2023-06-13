@@ -1,32 +1,41 @@
 <?php
+
+//Includes required files
 require_once('../includes/config.php');
 require_once('../includes/keyboard.php');
+
+//Retrieve the userId
 $userId = $_GET['userId'];
 
-
+//create a response array
 $response = array();
 
+//checking whether the request method is POST
+
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    //Retrieve the userId and commentText 
     $userId = isset($_POST['userId']) ? $_POST['userId'] : '';
     $commentText = isset($_POST['commentText']) ? $_POST['commentText'] : '';
 
-   
+   //check whether userId is not empty and userId is numeric
     if(!empty($userId) && is_numeric($userId)){
         $query = "SELECT * FROM `comments` WHERE `id` = '$userId'";
 
+        //check whether userid and commentText are not empty  
         if (!empty($userId) && !empty($commentText)) {
+
             // Check if an image is uploaded
             if (!empty($_FILES['image']['name'])) {
                 $imagePath = 'path/to/save/' . $_FILES['image']['name'];
     
-                // Move the uploaded image to the desired location
+                // Move the uploaded image to the specified location
                 if (move_uploaded_file($_FILES['image']['tmp_name'], $imagePath)) {
                     // Store the comment and image path in the database
                     $query = "INSERT INTO `comments` (`id`, `comment_text`, `image_path`) 
                               VALUES ('$userId', '$commentText', '$imagePath')";
-                   
+                
                 $result = $conn->query($query);
-
 
                 if($result){
 
@@ -55,7 +64,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
  }
+
+ //set the header content type as JSON
  header("CONTENT-TYPE:JSON");
+
+ //Encode the main response array and display as JSON
 echo json_encode($mainResponse, JSON_PRETTY_PRINT);
 
 }
