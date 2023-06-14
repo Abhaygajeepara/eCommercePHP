@@ -8,7 +8,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $userId = isset($_POST['userId']) ? $_POST['userId'] : '';
    if(!empty($producId) && !empty($quantities) && !empty($userId)){
     try{
+    
         
+        // check the paras are empty
         if(!is_numeric($producId) || !is_numeric($quantities) || !is_numeric($userId))  
         {
             $mainResponse[$status_keyword] = false;
