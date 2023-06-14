@@ -1,9 +1,7 @@
 <?php
 //Includes required files
 require_once('../includes/config.php');
-require_once('../includes/keyboard.php');
-
-//create a response array
+require_once('../includes/keyword.php');
 $response = array();
 
 //checking whether the request method is POST
@@ -35,7 +33,8 @@ if(!empty($email) && !empty($password) && !empty($username) && !empty($shippingA
         if($conn->query($query)){
             //Registration succesful
             $mainResponse[$status_keyword] = true;
-            $mainResponse[$message_keyword] = $registeration_successful_keyword;
+            $mainResponse[$message_keyword] = $successfulMessage_keyword;
+            
         }
         else{
             //Registration Failed

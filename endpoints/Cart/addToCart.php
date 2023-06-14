@@ -1,6 +1,6 @@
 <?php
 require_once('../includes/config.php');
-require_once('../includes/keyboard.php');
+require_once('../includes/keyword.php');
 $response = array();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $producId = isset($_POST['productId']) ? $_POST['productId'] : '';
@@ -60,5 +60,3 @@ else{
 }
 header("CONTENT-TYPE:JSON");
 echo json_encode($mainResponse, JSON_PRETTY_PRINT);
-
-?>

@@ -2,35 +2,46 @@
 
 //include required files
 require_once('../includes/config.php');
-require_once('../includes/keyboard.php');
-$userId = $_GET['userId'];
-
+require_once('../includes/keyword.php');
+$response = array();
+if ($_SERVER['REQUEST_METHOD'] === 'GET'){
+   
+    $userId =  isset($_GET['userId']) ? $_GET['userId'] : '';
+    if(!empty($userId) && is_numeric($userId)){
 try {
-    
-    //create a response array
-
-    $response = array();
-
-    // Build query to select users 
     $query = "select * from user where id = $userId";
     
     $result =  $conn->query($query);
     if ($result) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            $response['id'] = $row['id'];
-            $response['email'] = $row['email'];
-            $response['password'] = $row['password'];
-            $response['name'] = $row['name'];
+        if (mysqli_num_rows($result)>0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $response['id'] = $row['id'];
+                $response['email'] = $row['email'];
+                $response['username'] = $row['username'];
+            }
+            $mainResponse[$data_keyword] = $response;
+            $mainResponse[$status_keyword] = true;
+            $mainResponse[$message_keyword] = $successfulMessage_keyword;
+        }else{
+         
+            $mainResponse[$status_keyword] = false;
+            $mainResponse[$message_keyword] = $dataNotfound_message_keyword;
         }
-        $mainResponse[$data_keyword] = $response;
-        $mainResponse[$status_keyword] = true;
-        $mainResponse[$message_keyword] = $successfulMessage_keyword;
+       
     }
 } catch (Exception $e) {
     $mainResponse['status'] = false;
 }
+    }else{
+        $mainResponse[$status_keyword] = false;
+        $mainResponse[$message_keyword] = $missing_parameter_keyword . " OR " . $int_validation_keyword; 
+    }
+}
+else{
+    $mainResponse[$status_keyword] = false;
+    $mainResponse[$message_keyword] = $wrongRequest_message_keyword; 
+}
 
-//set the content header type as JSON
 header("CONTENT-TYPE:JSON");
 
 //encode the response array as JSON and display

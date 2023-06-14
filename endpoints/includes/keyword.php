@@ -1,7 +1,15 @@
 <?php
+
+// STATIC PATH
+
+$targetDirectory = 'C:\xampp\htdocs\Web\week5\uploads/';
+$getImagePath ='C:/xampp/htdocs/Web/week5/uploads/';
+
+
+
 $data_keyword = 'data';
 $status_keyword = "status";
-$message_keyword = "successful";
+$message_keyword = "message";
 
 
 // messages
@@ -29,5 +37,13 @@ $quantityUpdateFailed_message_keyword = "Quantity updation is failed";
 $addToCartSuccessfully_message_keyword = "Add To Cart Successfully";
 $addToCartFailed_message_keyword = "Add To Cart failed";
 
+
+// order
+$order_successful_keyword = "Order successfully created";
+$order_failed_keyword = "Order failed to add";
+
+// comment 
+$addComment_successful_keyword = "Add Comment successfully";
+$addComment_fail_keyword = "Add Comment fail";
 
 ?>

@@ -1,9 +1,7 @@
 <?php
 //include required files
 require_once('../includes/config.php');
-require_once('../includes/keyboard.php');
-
-//create respone array
+require_once('../includes/keyword.php');
 $response = array();
 
 //check whether request method is GET
@@ -47,4 +45,3 @@ else{
 }
 header("CONTENT-TYPE:JSON");
 echo json_encode($mainResponse, JSON_PRETTY_PRINT);
-?>
