@@ -1,9 +1,15 @@
 <?php
+//include required files
 require_once('../includes/config.php');
 require_once('../includes/keyword.php');
 $response = array();
+
+//check whether request method is GET
 if ($_SERVER['REQUEST_METHOD'] === 'GET'){
+
     $userId = isset($_GET['userId']) ? $_GET['userId'] : '';
+
+    //check whether userid is not empty and is numeric
     if(!empty($userId) && is_numeric($userId)){
         $query = "SELECT * FROM `cart` WHERE `user_id` = '$userId'";
         $result = $conn->query($query);

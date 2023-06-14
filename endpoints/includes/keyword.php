@@ -12,8 +12,6 @@ $status_keyword = "status";
 $message_keyword = "message";
 
 
-
-
 // messages
 $dataNotfound_message_keyword = "Data not found";
 $dataFound_message_keyword = "Data found";

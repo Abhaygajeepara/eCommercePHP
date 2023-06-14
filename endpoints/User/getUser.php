@@ -1,4 +1,6 @@
 <?php
+
+//include required files
 require_once('../includes/config.php');
 require_once('../includes/keyword.php');
 $response = array();
@@ -8,6 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET'){
     if(!empty($userId) && is_numeric($userId)){
 try {
     $query = "select * from user where id = $userId";
+    
     $result =  $conn->query($query);
     if ($result) {
         if (mysqli_num_rows($result)>0) {
@@ -40,6 +43,8 @@ else{
 }
 
 header("CONTENT-TYPE:JSON");
+
+//encode the response array as JSON and display
 echo json_encode($mainResponse, JSON_PRETTY_PRINT);
 
 ?>
