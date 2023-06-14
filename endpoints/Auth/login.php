@@ -1,7 +1,7 @@
 <?php
 //Include the required files
 require_once('../includes/config.php');
-require_once('../includes/keyboard.php');
+require_once('../includes/keyword.php');
 
 //create an array to store responses
 $response = array();
