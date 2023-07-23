@@ -18,6 +18,7 @@ try {
                 $response['id'] = $row['id'];
                 $response['email'] = $row['email'];
                 $response['username'] = $row['username'];
+                $response['shipping_address'] = $row['shipping_address'];
             }
             $mainResponse[$data_keyword] = $response;
             $mainResponse[$status_keyword] = true;

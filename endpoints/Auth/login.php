@@ -31,11 +31,12 @@ if(!empty($email) && !empty($password)){
                 $response['id'] = $row['id'];
                 $response['email'] = $row['email'];
                 $response['username'] = $row['username'];
+                $response['shipping_address'] = $row['shipping_address'];
                 $mainResponse[$data_keyword] = $response;
                 $mainResponse[$status_keyword] = true;
             }else{
                 $mainResponse[$data_keyword] = $response;
-                $mainResponse[$status_keyword] = true;
+                $mainResponse[$status_keyword] = false;
                 $mainResponse[$message_keyword] = $wrong_credential_keyword;
         
             }

@@ -19,6 +19,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET'){
             $i = 0;
                     while($row = mysqli_fetch_assoc($result)){
                         $response[$i]['productId'] = $row['product_id'];
+                        $productId =  $response[$i]['productId'];
+                        $productQuery = "SELECT * FROM `product` WHERE `id` = '$productId'";
+                        $productresult = $conn->query($productQuery);
+                        
+                           if(mysqli_num_rows($productresult)>0){
+                            $Productrow = mysqli_fetch_assoc($productresult);
+                            
+                            $response[$i]['description'] = $Productrow['description'];
+                            $response[$i]['image'] = $Productrow['image'];
+                            $response[$i]['pricing'] = $Productrow['pricing'];
+                            
+                        }
                         $response[$i]['quantities'] = $row['quantity'];
                         $response[$i]['userId'] = $row['user_id'];
                         $i++;
