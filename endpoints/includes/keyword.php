@@ -46,4 +46,15 @@ $order_failed_keyword = "Order failed to add";
 $addComment_successful_keyword = "Add Comment successfully";
 $addComment_fail_keyword = "Add Comment fail";
 
+$incorrect_current_password_message = "Incorrect current password.";
+$new_password_mismatch_message = "New password and retype new password do not match.";
+
+$password_updated_message = "Password updated successfully.";
+$password_update_failed_message = "Password update failed.";
+
+
+$address_updated_message = "Shipping address updated successfully.";
+$address_update_failed_message = "Failed to update shipping address.";
+
+
 ?>
