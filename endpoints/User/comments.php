@@ -27,7 +27,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Check if an image is uploaded
             if (!empty($_FILES['image']['name'])) {
-                $imagePath = 'path/to/save/' . $_FILES['image']['name'];
+                $imagePath = 'C:/xampp/htdocs/Web/week5/uploads/' . $_FILES['image']['name'];
     
                 // Move the uploaded image to the specified location
                 if (move_uploaded_file($_FILES['image']['tmp_name'], $imagePath)) {

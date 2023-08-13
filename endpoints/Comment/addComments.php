@@ -27,6 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 if (!file_exists($targetDirectory)) {
   mkdir($targetDirectory, 0777, true);
 }
+
+
         foreach ($_FILES['image']['tmp_name'] as $key => $tmpName) {
             $currentTimestamp = time();
             $fileName = basename($_FILES['image']['name'][$key]);

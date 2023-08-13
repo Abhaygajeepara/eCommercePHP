@@ -18,10 +18,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $jsonList = $row['items'];
             $list = json_decode($jsonList, true);
 
-           
+            
             foreach ($list as $string) {
+
+                 $productId = $string['productId'];
+                 $qty =$string['qty'];
                 $singleItem = array();
-               $productQuery = "SELECT * FROM `product` where id = $string";
+               $productQuery = "SELECT * FROM `product` where id = $productId";
                 $productResult = $conn->query($productQuery);
                 if (mysqli_num_rows($productResult)>0) {
                    
@@ -31,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                   $singleItem['image'] = $productrow['image'];
                   $singleItem['pricing'] = $productrow['pricing'];
                   $singleItem['shippingcost'] = $productrow['shippingcost'];
+                  $singleItem['qty'] = $qty;
                 }
                 $response['items'][] = $singleItem;
                 $listItem[] = $singleItem;
